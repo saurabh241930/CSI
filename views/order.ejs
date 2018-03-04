@@ -1,0 +1,76 @@
+<title>T-shirt Store</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+<div style="height:100px;background-color:black;text-align:center" class="row">
+  <div class="col col-lg-12 col-sm-12 col-xs-12">
+    <p style=" margin-top:25px;"><span style="font-family: 'Nunito', sans-serif;
+                    font-size:25px;
+                    color:white;
+                    "><i style=' font-size:35px;' class="fa fa-truck" aria-hidden="true"></i> <%=order.Title%></span></p>
+    
+    
+<div  class="row">
+  <div  class="col col-lg-0 col-sm-1 col-xs-1"></div>
+     <div  class="col col-lg-3 col-sm-10 col-xs-10"> 
+        <img style="height:300px;width:100%;margin-top:25px" src="<%=order.Image%>" alt=""><br>
+       
+        <p style="font-family: 'Nunito', sans-serif;font-size:20px;">
+       Price : <%=order.Price%> <i style="font-size:20px;" class="fa fa-inr" aria-hidden="true"></i> 
+       </p>
+    </div>
+  <div  class="col col-lg-0 col-sm-1 col-xs-1"></div>
+  
+    <div class="col col-lg-4 col-sm-12 col-xs-12">
+      
+      
+      
+      <p style="margin-top:45px;font-family: 'Raleway', sans-serif;font-size:15px;color:grey;">
+        <span style="font-family: 'Nunito', sans-serif;
+                     border-top:solid 5px black;
+                     font-size:15px;background-color:black;
+                     color:white;padding:10px;">
+          <i style="font-size:25px" class="fa fa-calendar-o" aria-hidden="true"></i> <%=order.OrderPlacedOn.toDateString()%></span><br><br>
+        <i style="font-size:30px;color:black" class="fa fa-user" aria-hidden="true"></i> Contact Name : <br>
+        <span style="font-family: 'Nunito', sans-serif;font-size:20px; color:black;"><%=order.UserFullName%></span><br><br>
+         <i style="font-size:30px;color:black" class="fa fa-map-marker" aria-hidden="true"></i> Shipping Address : <br>
+     <span style="font-family: 'Nunito', sans-serif;font-size:13px; color:black;"><%=order.ShippingAddress%></span><br><br>
+       <i style="font-size:25px;color:black" class="fa fa-mobile" aria-hidden="true"></i>  Contact No : <br>
+    <span style="font-family: 'Nunito', sans-serif;font-size:25px; color:black;"><%=order.UserPhoneNo%></span><br><br>
+         Payment Method : <br>
+    <span style="font-family: 'Nunito', sans-serif;font-size:15px; color:black;">Cash  on  delivery</span><br><br>
+        
+      </p>
+     
+    </div>
+    <div class="col col-lg-5 col-sm-0 col-xs-0">
+      
+    <form action="/order/cancel/<%=order._id%>?_method=DELETE" method = "post">
+            <button style="font-family: 'Nunito', sans-serif;
+                    font-size:20px;
+                    border:solid 5px red;                            
+                    background-color:red;
+                    padding:15px;                    
+                    color:white;" ><i style="font-size:25px;" class="fa fa-times-circle" aria-hidden="true"></i> 
+              Cancel this order</button>
+            </form>   
+      
+      
+  </div>
+    </div>
+  
+    
+    
+   
+
+      </div>
+</div>

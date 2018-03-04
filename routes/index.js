@@ -1,0 +1,331 @@
+var express = require('express');
+var router = express.Router();
+var passport = require('passport');
+var User = require('../models/User');
+var Event = require('../models/Event');
+var Order = require('../models/Registration')
+var flash = require('connect-flash');
+
+
+
+
+router.get('/',function(req,res){
+  
+  Event.find({},function(err,events){
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('index',{events:events});
+    }
+  })
+  
+  
+});
+
+
+
+
+
+
+
+
+
+
+
+
+// router.get('/buy/:id',isLoggedIn,function(req,res){
+  
+//   Event.findById(req.params.id,function(err,product){
+//     if (err) {
+//       console.log(err);
+//     } else {
+      
+  
+      
+//        res.render('show',{product:product});
+//     }
+//   })
+// });
+
+
+// router.post('/AddToCart/:id',isLoggedIn,function(req,res){ 
+//  User.findById(req.user._id,function(err,user){
+//     if (err) {
+//       console.log(err);
+//     } else {
+      
+//       Product.findById(req.params.id,function(req,product){
+//         if (err) {
+//           console.log(err);
+//         } else {
+          
+//             var OrderInfo = {
+//               id:product._id,
+//               ProductImage:product.ImageMain,
+//               Title:product.Title,
+//               Price:product.Price
+//             }
+          
+//           user.ProductInCart.push(OrderInfo);
+//           user.save();
+//           res.redirect("back");
+            
+//         }
+         
+//       })
+      
+      
+//     }
+//   })
+// });
+
+
+
+// router.get('/cart',isLoggedIn,function(req,res){
+  
+//   User.findById(req.user._id,function(err,user){
+//     if (err) {
+//       console.log(err);
+//     } else {
+      
+// var priceListArray = user.ProductInCart.map(function(order){
+//   return order.Price;
+// });
+      
+// var TotalAmountOfCart = priceListArray.reduce(function(a, b) { return a + b; }, 0);
+//         res.render('cart',{user:user,TotalAmountOfCart:TotalAmountOfCart});
+//     }
+//   })
+// });
+
+
+// router.delete('/cart/remove/:ordername/:id',isLoggedIn,function(req,res){
+   
+// User.update({_id:req.user._id},{ $pull:{ProductInCart:{_id:req.params.id}}},function(err,deleted){
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     res.redirect("back");
+//   }
+// })  
+      
+// })
+
+
+// router.post('/buy/:id/order',isLoggedIn,function(req,res){
+  
+//   Product.findById(req.params.id,function(err,product){
+//     if (err) {
+//       console.log(err);
+//     } else {
+       
+//       User.findById(req.user._id,function(err,user){
+//         if (err) {
+//           console.log(err);
+//         } else {
+          
+          
+//           var Title = product.Title;
+//           var Price = product.Price;
+//           var Image = product.ImageMain;
+//           var ProductID = product._id;
+//           var Size = req.body.Size;
+//           var AreaPincode = req.body.AreaPincode;
+//           var ShippingAddress = req.body.ShippingAddress;
+//           var UserFullName = req.body.UserFullName;
+//           var UserPhoneNo = req.body.UserPhoneNo;
+//           var BuyedByTheUser = req.user.username;
+//           var Quantity = req.body.Quantity;
+          
+    
+//           var newOrder = {
+//             Title:Title,
+//             Price:Price,
+//             Image:Image,
+//             Size:Size,
+//             Quantity:Quantity,
+//             ProductID:ProductID,
+//             AreaPincode:AreaPincode,
+//             ShippingAddress:ShippingAddress,
+//             UserFullName:UserFullName,
+//             UserPhoneNo:UserPhoneNo,
+//             BuyedByTheUser:BuyedByTheUser
+//           }
+          
+        
+//     Order.create(newOrder,function(err,createdOrder){
+//       if (err) {
+//         console.log(err);
+//       } else {
+        
+//         User.findById(req.user._id,function(err,user){
+//           if (err) {
+//             console.log(err);
+//           } else {
+            
+//             var OrderInfo = {
+//               id:createdOrder._id,
+//               OrderName:createdOrder.Title,
+//               ProductImage:createdOrder.Image,
+//               PlacedOn:createdOrder.OrderPlacedOn,
+//               Price:createdOrder.Price,
+//               Quantity:createdOrder.Quantity
+//             }
+            
+//             user.Orders.push(OrderInfo);
+//             user.save();
+            
+//         Product.find({},function(err,products){
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       res.redirect("/");
+//     }
+//   })       
+//           }
+//         })
+//       }
+//     })       
+//         }
+//       })
+      
+//     }
+//   }) 
+// });
+
+
+
+// //////////////////MY ORDERS////////////1
+// router.get('/myOrders',function(req,res){
+  
+//   User.findById(req.user._id,function(err,user){
+//     if (err) {
+//       console.log(err);
+//     } else {
+      
+//           Order.find({},function(err,orders){
+//     if (err) {
+//       console.log(err);
+//     } else {
+      
+//     res.render('myOrders',{user:user,orders:orders});
+//     }
+//   })
+      
+      
+      
+      
+// //         res.render('myOrders',{user:user});
+//     }
+//   })
+// });
+
+// //////////////////MY ORDERS////////////o
+
+
+// router.get('/order/:id',function(req,res){
+//   Order.findById(req.params.id,function(err,order){
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       res.render('order',{order:order});
+//     }
+//   })
+  
+  
+// });
+
+
+
+// router.delete('/order/cancel/:id',function(req,res){
+//   Order.findByIdAndRemove(req.params.id,function(err,deletedOrder){
+//     if (err) {
+//       console.log(err);
+//     } else {
+//     res.redirect("/myOrders");
+     
+//     }
+//   })
+  
+  
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////AUTH ROUTES////////////////////////////////////////
+//register
+router.get('/register',function(req,res){
+  res.render('register');
+});
+
+//Sign Up logic
+router.post('/register',function(req,res){
+var newUser = new User ({
+                        username: req.body.username,
+                        StudentName : req.body.StudentName,
+                        Gender : req.body.Gender,
+                        Class : req.body.Class,
+                        RollNumber : req.body.RollNumber,
+                        MobileNumber : req.body.MobileNumber
+                        });
+  
+
+  
+
+User.register(newUser,req.body.password,function(err,user){
+if (err) {
+console.log(err);
+return res.render('register');
+} else {
+passport.authenticate("local")(req,res,function(){
+res.redirect('/');
+})
+}
+
+})
+
+});
+
+
+/////////////////////Login route///////////////////////////
+router.get('/login',function(req,res){
+res.render('login');
+});
+
+//login logic
+// app.post('/login',middleware,callback)
+router.post('/login',passport.authenticate("local",
+{successRedirect: "/",
+failureRedirect: "/login"
+}),function(req,res){
+
+});
+
+
+router.get('/logout',function(req,res){
+req.logout();
+res.redirect('/');
+});
+
+
+////////////////// #### Middleware ##### for checking if user is logged in or not//////////////////////////////////////
+function isLoggedIn(req,res,next){
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    req.flash("error","You must be logged in to do that");
+    res.redirect('/login');
+  }
+}
+
+
+ module.exports = router;    

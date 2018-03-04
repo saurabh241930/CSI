@@ -1,0 +1,118 @@
+<title>T-shirt Store</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+<div style="height:100px;background-color:black;text-align:center" class="row">
+  <div class="col col-lg-12 col-sm-12 col-xs-12">
+    <p style=" margin-top:25px;"><span style="font-family: 'Nunito', sans-serif;
+                    font-size:25px;
+                    color:white;
+                    "><i style=' font-size:35px;' class="fa fa-truck" aria-hidden="true"></i> My Orders</span></p>
+
+    
+    
+    
+    <div style="margin-top:40px;">
+      <%user.Orders.forEach(function(order){%>
+
+   <div class="container">
+     <div class="row">
+       <div style="border-bottom:solid 1px #bcbcbc;margin-top:10px;" class="col col-lg-12 col-sm-12 col-xs-12">
+         
+         
+  <div  class="row">
+     <div class="col col-lg-0 col-sm-0 col-xs-1"> </div>
+    <div style="height:280px;border:solid 1px white;text-align:center" class="col col-lg-3 col-sm-10 col-xs-10">
+         <img src="<%=order.ProductImage%>" 
+              style="height:100%;width:100%;" alt="">
+    </div>
+    
+    <div class="col col-lg-0 col-sm-0 col-xs-1"> </div>
+    
+    <div class="col col-lg-3 col-sm-12 col-xs-12">
+      <p><span style=" font-family: 'Raleway', sans-serif;
+                    font-size:25px;"><%=order.OrderName%>
+        </span> X <span style="background-color:black;font-family: 'Nunito', sans-serif;
+                              color:white;padding:5px;"><%=order.Quantity%></span> <br>
+        <span style=" font-family: 'Nunito', sans-serif;
+                     font-size:35px;"><%=order.Price%></span><br><br>
+        <span style="font-family: 'Nunito', sans-serif; font-size:15px;">Order ID :</span> 
+         <span style=" 
+                     font-size:12px;"><%=order.id%></span><br>
+        
+      </p>
+    </div>
+    
+    
+       <div class="col col-lg-3 col-sm-12 col-xs-12">
+      <p><span style="font-family: 'Raleway', sans-serif;font-size:15px;">Order placed On :</span><br>
+        <span style="font-family: 'Nunito', sans-serif;
+                    font-size:15px;"><%=order.PlacedOn.toDateString()%></span><br><br><br><br>
+        
+        
+        
+        <p style="margin-bottom:-10px;font-family: 'Nunito', sans-serif;color:red">Cancelled</p>
+  
+        
+       <%orders.some(function(EachOrder){%>
+        
+        <%if(EachOrder._id.toString() !== order.id.toString()){%>
+        
+       
+        
+         <%}else{%> 
+        <a href="/order/<%=order.id%>"  style="font-family: 'Nunito', sans-serif;
+                    font-size:14px;
+                    background-color:black;
+                    padding:15px;
+                    color:white;"><i style="font-size:20px;" class="fa fa-file-text" aria-hidden="true"></i>  See more </a>
+        
+        <%}%>
+        <%})%>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+      </p>
+    </div>
+    
+        <div class="col col-lg-3 col-sm-12 col-xs-12">
+      <p>
+        
+      </p>
+    </div>
+    
+  
+    
+     </div>
+         
+         
+       </div>
+     </div>
+    </div>
+    
+
+
+<%})%>
+    
+    </div>
+
+      </div>
+</div>

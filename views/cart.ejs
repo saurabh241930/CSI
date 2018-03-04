@@ -1,0 +1,180 @@
+<title>T-shirt Store</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+<div style="text-align:center" class="row">
+  <div style="height:100px;background-color:black;text-align:center" class="col col-lg-12 col-sm-12 col-xs-12">
+    <p style=" margin-top:25px;"><span style="font-family: 'Nunito', sans-serif;
+                    font-size:25px;
+                    color:white;
+                    "><i style=' font-size:35px;' class="fa fa-shopping-cart" aria-hidden="true"></i>
+      My Cart (Total : <%=TotalAmountOfCart%> <i class="fa fa-inr" aria-hidden="true"></i> )</span></p>
+    
+    
+    
+    
+
+   <%user.ProductInCart.forEach(function(order){%>
+ 
+    
+    <div style="margin-top:40px;">
+      
+      
+      
+
+   <div class="container">
+     <div class="row">
+       <div style="border-bottom:solid 1px #bcbcbc;margin-top:10px;" class="col col-lg-12 col-sm-12 col-xs-12">
+         
+         
+  <div  class="row">
+     <div class="col col-lg-0 col-sm-0 col-xs-1"> </div>
+    <div style="height:280px;border:solid 1px white;text-align:center" class="col col-lg-3 col-sm-10 col-xs-10">
+         <img src="<%=order.ProductImage%>" 
+              style="height:100%;width:100%;" alt="">
+    </div>
+    
+    <div class="col col-lg-0 col-sm-0 col-xs-1"> </div>
+    
+    <div class="col col-lg-3 col-sm-12 col-xs-12">
+      <p><span style=" font-family: 'Raleway', sans-serif;
+                    font-size:25px;"><%=order.Title%></span>  <br>
+        <span style=" font-family: 'Nunito', sans-serif;
+                     font-size:35px;"><%=order.Price%> <i class="fa fa-inr" aria-hidden="true"></i></span><br><br>
+        <span style="font-family: 'Nunito', sans-serif; font-size:15px;">Order ID :</span> 
+         <span style=" 
+                     font-size:12px;"><%=order.id%></span><br>
+        
+      </p>
+    </div>
+    
+    
+       <div class="col col-lg-3 col-sm-12 col-xs-12">
+      <p style="margin-top:20px">
+        
+        <form action="/cart/remove/<%=order.Title%>/<%=order._id%>?_method=DELETE" method="post">
+        <button  style="font-family: 'Nunito', sans-serif;
+                    font-size:14px;
+                    border:solid 1px red;
+                    background-color:red;
+                    padding:15px;
+                    color:white;">
+          <i style="font-size:20px;" class="fa fa-times" aria-hidden="true"></i>
+          Remove from cart </button></form>
+          <br>
+        <span style="font-family: 'Nunito', sans-serif;
+                    font-size:15px;"></span><br><br><br>
+        <a href="#"  style="font-family: 'Nunito', sans-serif;
+                    font-size:14px;
+                    background-color:black;
+                    padding:15px;
+                    color:white;"> Buy now </a>
+        
+
+        
+      </p>
+    </div>
+    
+        <div class="col col-lg-3 col-sm-12 col-xs-12">
+      <p>
+        
+      </p>
+    </div>
+    
+  
+    
+     </div>
+         
+         
+       </div>
+     </div>
+    </div>
+    
+
+
+<%})%>
+    
+    </div>
+
+      </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

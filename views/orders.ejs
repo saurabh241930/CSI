@@ -1,0 +1,171 @@
+
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+
+<div style="font-family: 'Nunito', sans-serif;text-align:center;" class="row">
+  
+  
+  
+  
+  <div style="border:solid 1px #bcbcbc;height:50px;" class="col col-lg-1 col-sm-1  col-xs-12">
+    <p style="font-size:15px;">Product Name </p>
+  </div>
+  
+  <div style="border:solid 1px #bcbcbc;height:50px;" class="col col-lg-1 col-sm-1 col-xs-12">
+   <p style="font-size:15px;"> Product Image</p>
+  </div>
+  
+    <div style="border:solid 1px #bcbcbc;height:50px;"style="border:solid 1px #bcbcbc;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p style="font-size:15px;"> Price</p>
+  </div>
+  
+    <div style="border:solid 1px #bcbcbc;height:50px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p style="font-size:15px;">Username</p>
+  </div>
+  
+    <div style="border:solid 1px #bcbcbc;height:50px;" class="col col-lg-2 col-sm-2 col-xs-12">
+    <p style="font-size:15px;">Shipping Address</p>
+  </div>
+  
+  
+    <div style="border:solid 1px #bcbcbc;height:50px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p style="font-size:15px;">Contact Name</p>
+  </div>
+  
+   <div style="border:solid 1px #bcbcbc;height:50px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p style="font-size:15px;">Area PinCode</p>
+  </div>
+  
+   <div style="border:solid 1px #bcbcbc;height:50px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p style="font-size:15px;">Quantity%></p>
+  </div>
+  
+   <div style="border:solid 1px #bcbcbc;height:50px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p style="font-size:15px;">Size</p>
+  </div>
+  
+   <div style="border:solid 1px #bcbcbc;height:50px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p style="font-size:15px;">User Phone No</p>
+  </div>
+  
+    <div style="border:solid 1px #bcbcbc;height:50px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p style="font-size:15px;">Order date</p>
+  </div>
+  
+  
+  
+</div>
+  
+  
+ 
+    
+
+<div style="text-align:center;" class="row">
+   <%orders.forEach(function(order){%>
+  
+  <div style="">
+    <div style="border:solid 1px #bcbcbc;height:100px;" class="col col-lg-1 col-xs-12">
+    <p> <%=order.Title%></p>
+  </div>
+  
+    <div style="border:solid 1px #bcbcbc;height:100px;" class="col col-lg-1 col-sm-1 col-xs-12">
+   <img src="<%=order.Image%>" style="width:100px;height:100px;">
+  </div>
+  
+    <div style="border:solid 1px #bcbcbc;height:100px;"style="border:solid 1px #bcbcbc;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p> <%=order.Price%></p>
+  </div>
+  
+    <div style="border:solid 1px #bcbcbc;height:100px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p> <%=order.BuyedByTheUser%></p>
+  </div>
+  
+    <div style="border:solid 1px #bcbcbc;height:100px;" class="col col-lg-2 col-sm-2 col-xs-12">
+    <p> <%=order.ShippingAddress%></p>
+  </div>
+  
+  
+    <div style="border:solid 1px #bcbcbc;height:100px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p> <%=order.UserFullName%></p>
+  </div>
+  
+     <div style="border:solid 1px #bcbcbc;height:100px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p> <%=order.AreaPincode%></p>
+  </div>
+  
+   <div style="border:solid 1px #bcbcbc;height:100px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p> <%=order.Quantity%></p>
+  </div>
+  
+   <div style="border:solid 1px #bcbcbc;height:100px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p> <%=order.Size%></p>
+  </div>
+  
+   <div style="border:solid 1px #bcbcbc;height:100px;" class="col col-lg-1 col-sm-1 col-xs-12">
+    <p> <%=order.UserPhoneNo%></p>
+  </div>
+  
+    <div style="border:solid 1px #bcbcbc;height:100px;" class="col col-lg-1  col-xs-12">
+    <p> <%=order.OrderPlacedOn.toDateString()%></p>
+  </div>
+  </div>
+  
+  
+  
+  
+   <%})%>
+</div>
+   
+     
+ 
+  
+
+
+
+
+    
+  
+    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
