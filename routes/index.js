@@ -2,28 +2,152 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var User = require('../models/User');
+var Image = require('../models/Image');
 var Event = require('../models/Event');
-var Order = require('../models/Registration')
-var flash = require('connect-flash');
+var Member = require('../models/Member');
+
 
 
 
 
 router.get('/',function(req,res){
   
-  Event.find({},function(err,events){
+
+      
+       Event.find({},function(err,events){
     if (err) {
       console.log(err);
     } else {
-      res.render('index',{events:events});
-    }
+      
+     Image.find({},function(err,images){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('index',{events:events,images:images});
+        }
   })
+       }
+  })
+  
+ 
   
   
 });
 
 
 
+router.get('/open/:id',function(req,res){
+  Event.findById(req.params.id,function(err,event){
+    if (err) {
+      console.log(err)
+    } else {
+       User.findById(req.user._id,function(err,user){
+         if (err) {
+          console.log(err)
+        } else {
+          res.render("Event",{event:event,user:user})
+        }
+       })
+      
+    }
+  })
+})
+       
+
+router.post('/register/:id/:EventName',function(req,res){
+
+       User.findById(req.user._id,function(err,user){
+         if (err) {
+          console.log(err)
+        } else {
+         
+          var event = {
+            id:req.params.id,
+            EventName:req.params.EventName
+          }
+          
+          user.RegisteredEvents.push(event);
+          user.save(function(err,saved){
+            if (err) {
+              console.log(err)
+            } else {
+            
+              
+               
+          Event.findById(req.params.id,function(err,event){
+            if (err) {
+              console.log(err)
+            } else {
+              var Register = {
+                              id:req.user._id,
+                              StudentName:req.user.StudentName
+                              }
+              
+          event.RegisteredStudents.push(Register);
+          event.save(function(err,saved){
+            if (err) {
+              console.log(err)
+            } else {
+                res.redirect("back");
+              
+            }
+          })
+              
+            }
+          })             
+            }
+          })
+            
+        }
+       })
+
+})
+
+
+
+
+
+
+
+router.post('/RegisterForCSI/',function(req,res){
+
+      
+   var newMember = {
+                MemberId:req.user._id,
+                username:req.user.username,
+                StudentName:req.user.StudentName,
+                Gender:req.user.Gender,
+                Class:req.user.Class,
+                RollNumber:req.user.RollNumber,
+                MobileNumber:req.user.MobileNumber
+                }
+      
+   Member.create(newMember,function(err,newestMember){
+     if (err) {
+      console.log(err)
+    } else {
+      
+      User.findById(req.user._id,function(err,user){
+        if (err) {
+          console.log(err)
+        } else {
+          user.CSImembership = "Registered";
+          user.ModalText = "#Registered";
+          user.save();
+        }
+      })
+      
+      
+      console.log("Member added");
+      res.redirect("back");
+    }
+   })
+   
+  
+  
+  
+})
 
 
 

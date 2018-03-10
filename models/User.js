@@ -10,26 +10,17 @@ Gender            :String,
 Class             :String,  
 RollNumber        :Number,
 MobileNumber      :Number,
+CSImembership     :{type:String,default:"Register Now"},
+ModalText         :{type:String,default:"#Register"},
 RegisteredEvents  :[{
-  
-                      EventId      :{
-                                       type : mongoose.Schema.Types.ObjectId,
-                                       ref : "Event"
-                                    },
-  
-                      RegistrationId :{
-                                       type : mongoose.Schema.Types.ObjectId,
-                                       ref : "Registration"
-                                   },
-  
-                      EventName       :String,
-                      RegistrationDate:{type:Date,default:Date.now},
-  
-                    }]
-
-
-  
-});
+                    
+                    id:{
+                                type : mongoose.Schema.Types.ObjectId,
+                                ref : "Event"
+                     },
+                     EventName:String
+                   }]
+},{ usePushEach: true });
 
 
 

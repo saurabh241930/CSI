@@ -1,0 +1,57 @@
+
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<div class="row">
+  
+  <div class="col col-lg-12">
+    <p style="background-color:#ccc;
+              padding:20px;
+              text-align:center;
+              font-size:50px;
+              font-weight:bold">Comps - B </p>
+  </div>
+  
+  <div class="col col-lg-3">
+  <p style="font-size:25px;font-weight:bold; text-align:center;">StudentName</p>
+  </div>
+  <div class="col col-lg-3">
+  <p style="font-size:25px;font-weight:bold; text-align:center;">PID</p>
+  </div>
+  <div class="col col-lg-3">
+  <p style="font-size:25px;font-weight:bold; text-align:center;">RollNumber</p>
+  </div>
+    <div class="col col-lg-3">
+  <p  style="font-size:25px;font-weight:bold; text-align:center;">Mobile Number</p>
+  </div>
+
+  
+  
+    <%members.forEach(function(member){%>
+<div class="col col-lg-3" style="border-right:solid 2px #ccc">
+  <p style="font-size:17px; text-align:center;"><%=member.StudentName%></p>
+  </div>
+  <div class="col col-lg-3" style="border-right:solid 2px #ccc">
+  <p style="font-size:17px; text-align:center;"><%=member.username%></p>
+  </div>
+  <div class="col col-lg-3" style="border-right:solid 2px #ccc">
+  <p style="font-size:17px; text-align:center;"><%=member.RollNumber%></p>
+  </div>
+    <div class="col col-lg-3">
+  <p style="font-size:17px; text-align:center;"><%=member.MobileNumber%></p>
+  </div>
+<%})%>
+  
+  
+  
+  
+</div>
+

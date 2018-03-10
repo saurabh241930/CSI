@@ -3,34 +3,37 @@ var  methodOverride = require('method-override'),
            mongoose = require('mongoose'),
             express = require('express'),
               flash = require('connect-flash'),
-//                Blog = require('./models/blog'),
-//              Course = require('./models/course'),
-//              seedDB = require('./seeds'),
-//             Comment = require('./models/comment'),
+
                User = require('./models/User'),
+              Image = require('./models/Image'),
+             Member = require('./models/Member'),
               Event = require('./models/Event'),
            passport = require('passport'),
       LocalStrategy = require('passport-local'),
         
                 app = express();
 
-//   var commentRoutes = require('./routes/comments'),
-//         blogsRoutes = require('./routes/blogs'),
-//          authRoutes = require('./routes/index'),
-//          subsRoutes = require('./routes/subscribe'),
-//       profileRoutes = require('./routes/profile'),
-//           pinRoutes = require('./routes/pin'),
-//          likeRoutes = require('./routes/like'),
-//       complexRoutes = require('./routes/complex');
+
        
   var  authRoutes = require('./routes/index');
   var  adminRoutes = require('./routes/adminRoutes');
-
+  var cloudinary = require('cloudinary');
+  var multer = require('multer'); 
 
 
 //seedDB(); //Seed the database
 
 //================================================PASSPORT CONFIGURATION==================================================//
+
+ cloudinary.config({ 
+ cloud_name: 'dxotafsfa', 
+ api_key: '247743586122155', 
+ api_secret: 'lRSmFwRap_LS-tKzXQqgdqhv8Xo' 
+ }); 
+
+
+
+
 
 app.use(require('express-session')({
   secret: "This is secret",
@@ -50,7 +53,6 @@ passport.deserializeUser(User.deserializeUser());
 /////passing "currentUser" to every template/////////////////
 app.use(function(req,res,next){
   res.locals.currentUser = req.user;
-  res.locals.message = req.flash("error");
   next();
 })
 
@@ -59,6 +61,7 @@ app.use(function(req,res,next){
 
 
    //==================================================APP CONFIG=========================================================//
+   mongoose.Promise = global.Promise;
    mongoose.connect('mongodb://localhost/CSI', { useMongoClient: true, });
    app.set('view engine','ejs');
    app.use(express.static(__dirname +'/public'));
@@ -67,9 +70,24 @@ app.use(function(req,res,next){
   //===================================================APP CONFIG==========================================================//
 
 
-// Event.create({
-//   EventName:"No name"
-// })
+
+///Default event creation///
+//   Main.find({},function(err,main){
+//     if (err) {
+//       console.log(err);
+//     } else {
+    
+//       if(main.length === 0){
+//         Main.create({
+//         Description:"Description of CSI"
+//      })
+//       }
+      
+      
+//     }
+//   })
+///Default event creation///
+
 
 
 
@@ -99,13 +117,7 @@ app.use(function(req,res,next){
 
  app.use(authRoutes);
  app.use(adminRoutes);
-// app.use(commentRoutes);
-// app.use(blogsRoutes);
-// app.use(subsRoutes);
-// app.use(profileRoutes);
-// app.use(pinRoutes);
-// app.use(likeRoutes);
-// app.use(complexRoutes);
+
 
 
 app.listen(3000, function () {

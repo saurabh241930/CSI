@@ -20,13 +20,17 @@
      <h1 class="h1" style="text-align:center">Edit Event</h1>
     
     
-    <form  action = '/EditEvent/<%=events[0]._id%>' method = "post">
+    <form  action = '/EditEvent/' method = "post">
     
     <div  class="form-group">
-      <input class="form-control" type = 'text' name = 'EventName' placeholder = 'EventName'><br>
-      <input class="form-control" type = 'number' name = 'EntryFee' placeholder = 'EntryFee'><br>
-      <input class="form-control" type = 'date' name = 'Date' placeholder = 'EntryFee'><br>
-   <textarea class="form-control" type = 'text' name = 'Description' placeholder = 'Description'></textarea><br>
+     
+      
+      
+      <p>Add Event</p>
+      
+      <input type="text" name = "eventName" placeholder="Event name">
+      <textarea  type = 'text' name = 'eventDescription' placeholder = 'Event Description'></textarea>
+      
      
    
       <button class="btn btn-primary" style="width:100%" >Submit</button>
