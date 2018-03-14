@@ -1,0 +1,120 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700" rel="stylesheet">
+
+<body style="max-width: 100%;
+    overflow-x: hidden;">
+  
+  <div class="row" style="width:103%;">
+      <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        style="height:280px;background-color:rgba(124, 199, 255,0.5)">
+     <div class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
+       <img style="margin-top:10px;
+                   width:200px" src="https://i.imgur.com/NJjvJGq.png" alt="">
+     </div>
+     <div class="col col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12"
+          style="text-align:center">
+         <p style="font-family: 'Nunito', sans-serif;
+                   font-size:30px;
+                   margin-top:40px"><strong>Aldel Education Trust's <br> St. John College of Engineering and Management <br> Department of Computer Engineering <br> CSI</strong></p>
+     </div>
+     <div class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
+       <img src="https://i.imgur.com/idPi6lN.gif" style="height:150px;width:250px;margin-top:50px" alt="">
+     </div>
+     
+    </div> 
+  
+<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" 
+         style="height:50px;background-color:#003399">
+      
+      <div style="text-align:center" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
+        <div style='margin-top:10px'><a href="/" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:white;"><i class="fa fa-home"></i> Home</a></div>
+      </div>
+      
+      
+      <div style="text-align:center;background-color:white;padding-bottom:8px" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
+         <div style='margin-top:10px'><a href="/allEvents" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:rgb(0, 51, 153);background-color:white"><i class="fa fa-calendar"></i> All Events</a></div>
+      </div>
+      
+      
+      <div style="text-align:center" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
+         <div style='margin-top:10px'><a href="/pastEvents" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:white;"><i class="fa fa-calendar"></i> Past Events</a></div>
+      </div>
+      
+      
+      <div style="text-align:center" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
+         <div style='margin-top:10px'><a href="/gallery" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:white;"><i class="fa fa-th-large"></i> Gallery</a></div>
+      </div>
+      
+      
+      <div style="text-align:center;;padding-bottom:8px" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
+         <div style='margin-top:10px'><a href="/contact" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:white"><i class="fa fa-user"></i> Contact us</a></div>
+      </div>
+      
+      
+      <div style="text-align:center;" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
+         <div style='margin-top:10px'><a href="/register" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:white"><i class="fa fa-lock"></i> 
+           
+            <% if(currentUser){%>
+           <%= currentUser.username %>
+           <%}else{%>
+           Register</a>
+           <%}%>
+          </div> 
+           
+           
+      </div>
+    </div>
+ 
+       </div>
+  
+    <div class="container">
+    
+      
+         <%events.forEach(function(event){%>
+        
+         
+        
+        
+            <p style="background-color:#ccc;
+                   font-family: 'Nunito', sans-serif;
+                   font-size:20px;
+                   margin-top:15px;
+                   padding:15px"><%=event.EventName%>
+           <span style="font-family: 'Nunito', sans-serif;
+                    font-size:15px;
+                    color:rgba(0, 51, 153,0.7);
+                    
+                    padding:4px;
+                    border-radius:5px"><%=event.EventDateInWords%></span>
+           <a href="/open/<%=event._id%>"
+              style="float:right;
+                             background-color:rgb(0, 51, 153);
+                             color:white;
+                             padding:6px;
+                             font-size:15px;
+                             border-radius:5px
+                             ">Register <i class="fa fa-arrow-circle-right"></i></a>
+         </p>
+         <%})%>
+      
+      
+    </div>
+  
+</body>
+
+
+
+
+

@@ -335,29 +335,7 @@ router.post('/EditEvent/:id',function(req,res){
      event.SubEvents.push(eventInfo);
      event.save();
   
-  
-  
-  
-  
-  
-  
-//   Event.findById(req.params.id,function(err,event){
-//     if (err) {
-//       console.log(err);
-//     } else {
-      
-   
-//       var newEvent = { eventName:req.body.eventName,
-//                       eventDate:req.body.eventDate,
-//                       eventDescription:req.body.eventDescription
-//                      }
-      
-//       event.SubEvents.push(newEvent)
-//       event.save()
-      
-//       console.log(event);
-      
-//       res.redirect("back");
+ 
       
       
      }
@@ -389,7 +367,7 @@ function isLoggedIn(req,res,next){
 }
 
 function isAdmin(req,res,next){
-  if (req.user.username === "Admin") {
+  if (req.user.username === "Admin" || req.user.username === "Saurabh") {
     return next();
   } else {
     req.flash("error","You must be logged in to do that");
