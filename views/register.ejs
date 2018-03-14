@@ -5,52 +5,120 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700" rel="stylesheet">
 
 <body>
   
+  <div class="row">
+      <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        style="height:280px;background-color:rgba(124, 199, 255,0.5)">
+     <div class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
+       <img style="margin-top:10px" src="https://i.imgur.com/vgOYEad.png" alt="">
+     </div>
+     <div class="col col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12"
+          style="text-align:center">
+         <p style="font-family: 'Nunito', sans-serif;
+                   font-size:100px;
+                   margin-top:30px"><strong>Title of website</strong></p>
+     </div>
+     <div class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
+       <img src="https://i.imgur.com/idPi6lN.gif" style="height:150px;width:250px;margin-top:50px" alt="">
+     </div>
+     
+    </div> 
+  
+<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" 
+         style="height:50px;background-color:#003399">
+      
+      <div style="text-align:center" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
+        <div style='margin-top:10px'><a href="/" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:white;"><i class="fa fa-home"></i> Home</a></div>
+      </div>
+      
+      
+      <div style="text-align:center" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
+         <div style='margin-top:10px'><a href="" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:white;"><i class="fa fa-calendar"></i> Upcoming Events</a></div>
+      </div>
+      
+      
+      <div style="text-align:center" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
+         <div style='margin-top:10px'><a href="" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:white;"><i class="fa fa-calendar"></i> Past Events</a></div>
+      </div>
+      
+      
+      <div style="text-align:center" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
+         <div style='margin-top:10px'><a href="" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:white;"><i class="fa fa-th-large"></i> Gallery</a></div>
+      </div>
+      
+      
+      <div style="text-align:center" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
+         <div style='margin-top:10px'><a href="" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:white;"><i class="fa fa-user"></i> Contact us</a></div>
+      </div>
+      
+      
+      <div style="text-align:center;background-color:white;padding-bottom:8px" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
+         <div style='margin-top:10px'><a href="/register" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:rgb(0, 51, 153)"><i class="fa fa-lock"></i> Sign UP</a></div>
+      </div>
+    </div>
+ 
+  
+  
+  
+  
   <div class="container">
-    
-    
+
     
     <div  style=" font-family: 'Nunito', sans-serif; text-align:center;margin-top:50px;" class="row">
       
     <div class="col col-lg-4 col-sm-0 col-xs-0 "> </div>
     <div class="col col-lg-4 col-sm-12 col-xs-12 ">
+
       
-    <p><i style="font-size:50px;" class="fa fa-arrows-alt" aria-hidden="true"></i></p>
+      
+      
+      
+      
       
     <form class = "ui form" action = '/register' method = "post">
     
-    <div>
+    <div style="margin-top:10px; font-size:20px">
+       <label>Enter your PID</label>
        <input  style="margin-top:20px;
                 text-align:center;" 
         class="form-control" type = 'text' name = 'username' placeholder = 'PID'>
     </div>
 
  
-    <div>
+    <div style="margin-top:10px; font-size:20px">
+      <label>Enter your Password</label>
        <input  style="margin-top:20px;
                 text-align:center;" 
         class="form-control" type = 'password' name = 'password' placeholder = 'Password'>
     </div>
- 
-       <div>
+      
+       <div style="margin-top:10px; font-size:20px">
+       <label>Enter your Name</label>
        <input  style="margin-top:20px;
                 text-align:center;" 
         class="form-control" type = 'text' name = 'StudentName' placeholder = 'Full name'>
     </div>
       
-      
-       <div>
+      <div style="margin-top:10px; font-size:20px">
+       <label>Enter your Mobile no.</label>
        <input  style="margin-top:20px;
                 text-align:center;" 
-        class="form-control" type = 'number' name = 'MobileNumber' placeholder = 'Mobile Number'>
+        class="form-control" type = 'number' name = 'MobileNumber' placeholder = 'MobileNumber'>
     </div>
       
-      
-       <div>
+        <div>
          <label>Gender :</label>
-       <select style="margin-top:20px;"
+       <select style="margin-top:20px;
+                      text-align:center"
                name="Gender">
      
   <option value="Male">Male</option>
@@ -60,34 +128,40 @@
     </div>
       
       
-     <div>
+       <div>
          <label>Branch :</label>
-       <select style="margin-top:20px;"
+       <select style="margin-top:20px;
+                      text-align:center"
                name="Class">
-     
-  <option value="S.E - Computer Engineering(A)">S.E - Computer Engineering(A)</option>
-  <option value="S.E - Computer Engineering(B)">S.E - Computer Engineering(B)</option>
-  <option value="S.E - IT">S.E - IT</option>
+         
+  <option value="F.E - Computer Engineering">F.E - Computer Engineering</option>
+  <option value="F.E - IT Engineering">F.E - IT Engineering</option>
+  <option value="F.E - EXTC Engineering">F.E - EXTC Engineering</option>  
+  <option value="S.E - Computer Engineering">S.E - Computer Engineering</option>
+  <option value="S.E - IT Engineering">S.E - IT Engineering</option>
+  <option value="S.E - EXTC Engineering">S.E - EXTC Engineering</option>
+  <option value="T.E - Computer Engineering">T.E - Computer Engineering</option>
+  <option value="T.E - IT Engineering">T.E - IT Engineering</option>
+
 
 </select>
     </div>
       
       
-    
-   <div>
+      <div>
        <input  style="margin-top:20px;
                 text-align:center;" 
         class="form-control" type = 'number' name = 'RollNumber' placeholder = 'Roll No.'>
     </div>
       
-      
-      
- <button style="background-color:black;
+ 
+ <button style="background-color:rgb(0, 51, 153);
                   color:white;
                   width:100%;
-                  border:solid 2px black;
+                  border:solid 2px rgb(0, 51, 153);
                   margin-top:20px;
-                  height:40px;"  >Sign up</button>
+                  height:40px;
+                  font-size:20px"  >Sign Up</button>
 </form>
     </div>
     <div class="col col-lg-4 col-sm-0 col-xs-0 "> </div>
@@ -98,7 +172,8 @@
   
   </div>
   
- 
+    </div>
+   
   
   
 </body>

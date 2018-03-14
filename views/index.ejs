@@ -29,55 +29,7 @@
   
   
   
-  
-  <style>
-body {
-    
-}
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color:black;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    font-family: 'Nunito', sans-serif;
-}
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-    
-    
-   html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-} 
-    
-    
-</style>
+
 </head>
 <body>
 
@@ -155,7 +107,13 @@ function closeNav() {
           style="text-align:center">
          <p style="font-family: 'Nunito', sans-serif;
                    font-size:100px;
-                   margin-top:30px"><strong>Title of website</strong></p>
+                   margin-top:30px"><strong>Title of website</strong>
+            <%if(currentUser){%>
+           <%if(currentUser.username === "Admin"){%>
+           <a href="/AdminPortal">Admin Side</a>
+           <%}%>
+        <%}%>
+       </p>
      </div>
      <div class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
        <img src="https://i.imgur.com/idPi6lN.gif" style="height:150px;width:250px;margin-top:50px" alt="">
@@ -200,8 +158,8 @@ function closeNav() {
       
       
       <div style="text-align:center" class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12" >
-         <div style='margin-top:10px'><a href="/login" style="font-family: 'Nunito', sans-serif;font-size:25px;
-                                color:white";><i class="fa fa-lock"></i> Login</a></div>
+         <div style='margin-top:10px'><a href="/register" style="font-family: 'Nunito', sans-serif;font-size:25px;
+                                color:white";><i class="fa fa-lock"></i> Register</a></div>
       </div>
     </div>
 
@@ -213,32 +171,31 @@ function closeNav() {
       
      <div class="col col-lg-12 col-md-6 col-xs-12" >
        
-        <div class="col col-lg-6 col-md-6 col-xs-12" >
+    <div class="col col-lg-6 col-md-6 col-xs-12" >
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+ 
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
+  <div class="carousel-inner" style="max-height:586px;
+                                     max-width:600px">
+     <div class="item active">
       <img style="width:100% !important;min-width:100 !important;height: auto;"
-           src="https://content1.jdmagicbox.com/comp/palghar/c4/022pxx22.xx22.100311095730.d7c4/catalogue/st-john-college-of-engineering-and-technology-palghar-palghar-institutes-t3uzm7.jpg" alt="Los Angeles">
+           src="http://www.campuskeeda.com/college-images/mumbai/st-john-college-of-engineering-and-technology-palghar-2.jpg" alt="">
     </div>
+    
+    
+    <%images.forEach(function(image){%>
+      <div class="item">
+      <img style="width:100% !important;min-width:100 !important;height: auto;"
+           src="<%=image.ImageURL%>" alt="">
+    </div>
+   <% })%>
+    
 
-    <div class="item">
-      <img style="width:100% !important;min-width:100 !important;height: auto;"
-           src="https://content1.jdmagicbox.com/comp/palghar/c4/022pxx22.xx22.100311095730.d7c4/catalogue/st-john-college-of-engineering-and-technology-palghar-palghar-institutes-t3uzm7.jpg" alt="Chicago">
-    </div>
 
-    <div class="item">
-      <img style="width:100% !important;min-width:100 !important;height: auto;"
-           src="https://content1.jdmagicbox.com/comp/palghar/c4/022pxx22.xx22.100311095730.d7c4/catalogue/st-john-college-of-engineering-and-technology-palghar-palghar-institutes-t3uzm7.jpg" alt="New York">
-    </div>
-  </div>
+    
+ 
 
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -250,11 +207,10 @@ function closeNav() {
     <span class="sr-only">Next</span>
   </a>
 </div>
-         
-          
-     </div>  
+   </div> 
+       </div>
        
-       <div style="border-right:solid 1px #ccc" class="col col-lg-4 col-md-6 col-xs-12" >
+       <div style="" class="col col-lg-4 col-md-6 col-xs-12" >
        
        <p style="margin-top:25px;text-align:center">
          <span style="font-family: 'Nunito', sans-serif;
@@ -265,119 +221,30 @@ function closeNav() {
                     border-radius:5px">Upcoming Events</span>
          </p>
          
-         <p style="background-color:#ccc;
-                   font-family: 'Nunito', sans-serif;
-                   font-size:20px;
-                   margin-top:15px;
-                   padding:8px">C-Debugging
-           <span style="font-family: 'Nunito', sans-serif;
-                    font-size:15px;
-                    color:rgba(0, 51, 153,0.7);
-                   
-                    padding:4px;
-                    border-radius:5px">10 February 2018</span>
-           <a href="" style="float:right;
-                             background-color:rgb(0, 51, 153);
-                             color:white;
-                             padding:8px;
-                             font-size:15px;
-                             border-radius:5px
-                             ">Register <i class="fa fa-arrow-circle-right"></i></a>
-         </p>
+         
+         
+         
         
-            <p style="background-color:#ccc;
-                   font-family: 'Nunito', sans-serif;
-                   font-size:20px;
-                   margin-top:15px;
-                   padding:8px">Inaugration
-           <span style="font-family: 'Nunito', sans-serif;
-                    font-size:15px;
-                    color:rgba(0, 51, 153,0.7);
-                    
-                    padding:4px;
-                    border-radius:5px">24 June 2018</span>
-           <a href="" style="float:right;
-                             background-color:rgb(0, 51, 153);
-                             color:white;
-                             padding:8px;
-                             font-size:15px;
-                             border-radius:5px
-                             ">Register <i class="fa fa-arrow-circle-right"></i></a>
-         </p>
+
         
-            <p style="background-color:#ccc;
-                   font-family: 'Nunito', sans-serif;
-                   font-size:20px;
-                   margin-top:15px;
-                   padding:8px">Quiz competion
-           <span style="font-family: 'Nunito', sans-serif;
-                    font-size:15px;
-                    color:rgba(0, 51, 153,0.7);
-                    
-                    padding:4px;
-                    border-radius:5px">07 January 2018</span>
-           <a href="" style="float:right;
-                             background-color:rgb(0, 51, 153);
-                             color:white;
-                             padding:8px;
-                             font-size:15px;
-                             border-radius:5px
-                             ">Register <i class="fa fa-arrow-circle-right"></i></a>
-         </p>
+         <%events.forEach(function(event){%>
         
          
-          <p style="background-color:#ccc;
-                   font-family: 'Nunito', sans-serif;
-                   font-size:20px;
-                   margin-top:15px;
-                   padding:8px">C-Debugging
-           <span style="font-family: 'Nunito', sans-serif;
-                    font-size:15px;
-                    color:rgba(0, 51, 153,0.7);
-                   
-                    padding:4px;
-                    border-radius:5px">10 February 2018</span>
-           <a href="" style="float:right;
-                             background-color:rgb(0, 51, 153);
-                             color:white;
-                             padding:8px;
-                             font-size:15px;
-                             border-radius:5px
-                             ">Register <i class="fa fa-arrow-circle-right"></i></a>
-         </p>
+        
         
             <p style="background-color:#ccc;
                    font-family: 'Nunito', sans-serif;
                    font-size:20px;
                    margin-top:15px;
-                   padding:8px">Inaugration
+                   padding:8px"><%=event.EventName%>
            <span style="font-family: 'Nunito', sans-serif;
                     font-size:15px;
                     color:rgba(0, 51, 153,0.7);
                     
                     padding:4px;
-                    border-radius:5px">24 June 2018</span>
-           <a href="" style="float:right;
-                             background-color:rgb(0, 51, 153);
-                             color:white;
-                             padding:8px;
-                             font-size:15px;
-                             border-radius:5px
-                             ">Register <i class="fa fa-arrow-circle-right"></i></a>
-         </p>
-        
-            <p style="background-color:#ccc;
-                   font-family: 'Nunito', sans-serif;
-                   font-size:20px;
-                   margin-top:15px;
-                   padding:8px">Quiz competion
-           <span style="font-family: 'Nunito', sans-serif;
-                    font-size:15px;
-                    color:rgba(0, 51, 153,0.7);
-                    
-                    padding:4px;
-                    border-radius:5px">07 January 2018</span>
-           <a href="" style="float:right;
+                    border-radius:5px"><%=event.EventDateInWords%></span>
+           <a href="/open/<%=event._id%>"
+              style="float:right;
                              background-color:rgb(0, 51, 153);
                              color:white;
                              padding:6px;
@@ -385,11 +252,11 @@ function closeNav() {
                              border-radius:5px
                              ">Register <i class="fa fa-arrow-circle-right"></i></a>
          </p>
-         
+         <%})%>
          
        </div>  
        
-       <div style="text-align:center" class="col col-lg-2">
+       <div style="text-align:center;border-left:solid 1px #ccc" class="col col-lg-2">
          <%if(currentUser){%>
          <i style="font-size:80px;color:#ccc;margin-top:40px;" class="fa fa-user"></i><br>
           <p style="font-family: 'Nunito', sans-serif;margin-top:10px; font-size:30px;"><strong><%=currentUser.StudentName%></strong></p><br>
@@ -397,18 +264,13 @@ function closeNav() {
          <p style="font-family: 'Nunito', sans-serif;margin-top:50px; font-size:18px;color:rgba(0,0,0,0.5);margin-top:-20px">
            <span style="background-color:rgba(0,0,0,0.5);color:white;padding:2px">PID :</span>
            <strong><%=currentUser.username%></strong></p><br>
+         
          <a style="font-family: 'Nunito', sans-serif;
                     font-size:15px;
                     color:white;
                     background-color:rgb(0, 51, 153);
                     padding:4px;
-                    border-radius:5px" href="/login">Your Registrations</a>
-         <a style="font-family: 'Nunito', sans-serif;
-                    font-size:15px;
-                    color:white;
-                    background-color:rgb(0, 51, 153);
-                    padding:4px;
-                    border-radius:5px" href="/login">Profile</a><br><br><br>
+                    border-radius:5px" href="/profile/<%=currentUser._id%>">Profile</a><br><br><br>
           <a style="font-family: 'Nunito', sans-serif;
                     font-size:20px;
                     color:white;
@@ -417,14 +279,42 @@ function closeNav() {
                     border-radius:5px" href="/logout">Logout</a>
          
          <%}else{%>
-         <p style="font-family: 'Nunito', sans-serif;margin-top:50px; font-size:20px;">You are not Logged in</p><br>
-         <a style="font-family: 'Nunito', sans-serif;
-                    font-size:20px;
-                    color:white;
-                    background-color:rgb(0, 51, 153);
-                    padding:8px;
-                    border-radius:5px" href="/login">Login</a>
-         <p style="font-family: 'Nunito', sans-serif;margin-top:50px; font-size:20px;">to view your profile</p>
+         <p style="margin-top:20px;font-family: 'Nunito', sans-serif;">Login to view your profile</p>
+         <div style="border-radius:8px;
+                     padding-bottom:15px;
+                     padding:15px 15px 15px 15px;
+                     border-top:solid 20px white;
+                     background-color:#ccc">
+                    <form class = "ui form" action = '/login' method = "post">
+    
+    <div style="margin-top:20px; font-size:17px">
+       <label>Enter your PID</label>
+       <input  style="margin-top:0px;
+                text-align:center;
+                 font-family: 'Nunito', sans-serif;" 
+        class="form-control" type = 'text' name = 'username' placeholder = 'PID'>
+    </div>
+
+ 
+    <div style="margin-top:20px; font-size:17px">
+      <label>Enter your Password</label>
+       <input  style="margin-top:20px;
+                text-align:center;
+                font-family: 'Nunito', sans-serif;" 
+        class="form-control" type = 'password' name = 'password' placeholder = 'Password'>
+    </div>
+ 
+ <button style="background-color:rgb(0, 51, 153);
+                  color:white;
+                  width:100%;
+                font-family: 'Nunito', sans-serif;
+                  border:solid 2px rgb(0, 51, 153);
+                  margin-top:20px;
+                  height:40px;
+                  font-size:20px"  >Login</button>
+</form>
+         </div>
+    
          <%}%>
        </div>
        
@@ -440,245 +330,7 @@ function closeNav() {
       
       
   
-      <div class="col  col-lg-12 col-md-6 col-xs-12" 
-           style="text-align:center;
-                  margin-top:300px;">
-        <div  class="col col-lg-12 col-md-12 col-xs-12" 
-             style="height:100px;
-                    width:100%;
-                    border:solid 1px black;
-                    background-color:black;
-                    border-top-left-radius:10px;
-                    border-top-right-radius:10px;
-                    ">
-          <div style="margin-top:26px">
-<a href=""><span style="font-family: 'Nunito', sans-serif;
- font-size:25px;
- color:white;"><i style="font-size:35px;
-  color:rgb(<%=Math.floor(Math.random()*256)%>,<%=Math.floor(Math.random()*256)%>,<%=Math.floor(Math.random()*256)%>)" 
-                  class="fa fa-flask"></i> </span></a>
-</div>
-        </div >
-       
-<!--         <div class="col col-lg-12 col-md-12 col-xs-12"
-             style="
-                    width:100%;
-                    background:url(https://i.imgur.com/ZbwfwoZ.jpg);
-                    background-size:cover;                      
-                    background-repeat:no-repeat;
-                    border-bottom:solid 1px #ccc;
-                    border-left:solid 1px #ccc;
-                    border-right:solid 1px #ccc;
-                    text-align:center">
-          
-      
-          <p  style="font-family: 'Nunito', sans-serif;
-                     font-size:20px;
-                     margin-top:0px;
-                     color:white;
-                     background-color:rgba(0,0,0,0.5);
-                     padding-top:20px;
-                     padding-bottom:60px">
-            <img id="logoImage" src="http://www.solarfirst.in/wp-content/uploads/2015/09/example-logo.png" style="width:400px;height:300px;
-                                                                                        object-fit:cover;
-                                                                                        border-radius:5px"
-                 alt=""><br><br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor<br>
-            incididunt ut labore et dolore magna aliqua. Urna nec tincidunt praesent semper<br>
-            feugiat nibh sed. Vulputate sapien nec sagittis aliquam.
-            
-            <br><br><br>
-            
-            <%if(currentUser){%>
-             <button style="font-family: 'Nunito', sans-serif;
-                          font-size:22px;
-                          background-color:#109100;
-                          color:white;
-                           border:solid 1px #109100;
-                           padding-left:15px;
-                           padding-right:15px;
-                           padding-top:8px;
-                           padding-bottom:8px;
-                           border-radius:5px;"
-                    type="button"  data-toggle="modal" data-target="<%=currentUser.ModalText%>">
-               <%=currentUser.CSImembership%></button>
-            
-          
-            
-            
-            <%}else{%>
-            
-    
-            
-             <button style="font-family: 'Nunito', sans-serif;
-                          font-size:22px;
-                          background-color:#b50000;
-                          color:white;
-                           border:solid 1px #b50000;
-                           padding-left:15px;
-                           padding-right:15px;
-                           padding-top:8px;
-                           padding-bottom:8px;
-                           border-radius:5px;"
-                    type="button"  data-toggle="modal" data-target="#Login">Login & Register </button>
-            
-            
-            
-            <%}%>
-            
-           </p>
-          
-          
-           
-         
-          
-          
-        </div> -->
-        
-        <div class="col col-lg-12 col-md-12 col-xs-12"
-             style="height:120px;
-                    background-color: white;
-                    text-align:center">
-          
-          <p style="margin-top:20px;
-                    font-family: 'Fredoka One', cursive;
-                    font-size:70px;
-                    color:black;
-                    text-shadow: 3px 3px #00cec0;
-                    
-                    "><span>Events</span></p>
-         </div>
-        
-        
-        <div class="col col-lg-12 col-md-12 col-xs-12"
-             style="">
-          
-          
-          <%events.forEach(function(event){%>
-          
-             <div  class="col col-lg-4 col-md-12 col-xs-12" 
-             style="
-                    
-                    height:400px;
-                    background-color:#111;
-                    text-shadow: 2px 2px red;
-                    border:solid 15px white;
-                   
-                    ">
-          
-         
-            <p style="font-family: 'Fredoka One', cursive;
-               margin-top:20px;
-             
-              font-size:45px;
-               color:white;
-                ">
-                <%=event.EventName%></p>
-              
-             
-               <br>
-              
-               <span style=" font-family: 'Nunito', sans-serif;
-                             
-                             font-size:20px;
-                            background-color:#00cec0;
-                            color:black;
-                            text-shadow: 1px 1px #aa00ff;
-                            box-shadow: 3px 4px #aa00ff;
-                            padding:15px;
-                            ;"><i style="font-size:30px" class="fa fa-calendar"></i> <strong><%=event.EventDateInWords%></strong></span><br>
-               
-               <div style=" font-family: 'Raleway', sans-serif;
-                           
-                           
-                            text-shadow: 0px 0px black;
-                            font-size:13px;
-                            height:200px;
-                            padding-top:30px;
-                            
-                            ">
-                 <div style="margin-top:20px">
-                    <span style="color:white" ><%=event.EventDescription%></span>
-                 </div><br>
-                  
-                 
-              <span>
-             
-                  <a href ="/open/<%=event._id%>" style=" font-family: 'Nunito', sans-serif;
-                             
-                             font-size:20px;
-                            background-color:#aa00ff;
-                            color:black;
-                            border:solid 1px #aa00ff;
-                            padding:10px;
-                            ;"><strong>Register</strong></span><a>
-               
-                
-               </div>
-             
-             
-                </div>
-          
-          
-          
-          
-          
-          <%})%>
-          
-           
-        </div>
-        
-    
-        
-        
-          </div>
-
-      
-      
-      
-      <section >
-        
-        
-        <p style="margin-top:20px;
-                    font-family: 'Fredoka One', cursive;
-                    font-size:70px;
-                    color:black;
-                    text-shadow: 3px 3px #00cec0;
-                    text-align:center;
-                    "><span>CSI Gallery</span></p>
-        
-        <%images.forEach(function(image){%>
-            <div class="col-lg-3 col-md-4 col-xs-6">
-         
-            <img  data-toggle="modal" 
-                 data-target="#Image"
-                 class="img-fluid img-thumbnail" src="<%=image.ImageURL%>" alt="">
-          </a>
-        </div>
-      
-        <div class="modal fade" id="Image" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content" style="text-align:center">
-<img src="<%=image.ImageURL%>" style="height:500px;width:800px;object-fit:cover">
-      </div>
-      
-    </div>
-  </div>
-      
-      
-        <%})%>
-      
-        
-        
-   
-        
-        
-      </section>
-      
-      
-      
+     
       
     <style>
  
@@ -709,118 +361,6 @@ function closeNav() {
     </div>
     
   </div>
-  
-  
-  
-  
-  <!--                         Registration Form modal                          -->
-  
-  
-  
-  <!-- Modal -->
-
-  
-  
-  
-  
-  
-  
-<!--                         Registration Form modal                          -->
-  
-  
-  
-  <!-- Modal -->
-  <div class="modal fade" id="Register" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Confirm CSI registration</p>
-    <form class = "ui form" action = '/RegisterForCSI' method = "post">
-    
- <button style="background-color:black;
-                  color:white;
-                  width:100%;
-                  border:solid 2px black;
-                  margin-top:20px;
-                  height:40px;
-                  font-family: 'Nunito', sans-serif;"  >Register</button>
-</form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-  
-  
-  
-  
-  
-  <!--                      Login Form modal                           -->
-  
-  
-  <!-- Modal -->
-  <div class="modal fade" id="Login" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          
-        </div>
-        <div class="modal-body">
-        
-            <form class = "ui form" action = '/login' method = "post">
-    
-    <div>
-       <input  style="margin-top:20px;
-                text-align:center;
-                font-family: 'Nunito', sans-serif;" 
-        class="form-control" type = 'text' name = 'username' placeholder = 'PID'>
-    </div>
-
- 
-    <div>
-       <input  style="margin-top:20px;
-                text-align:center;
-                font-family: 'Nunito', sans-serif;" 
-        class="form-control" type = 'password' name = 'password' placeholder = 'Password'>
-    </div>
- 
- <button style="background-color:black;
-                  color:white;
-                  width:100%;
-                  border:solid 2px black;
-                  margin-top:20px;
-                  height:40px;
-                  font-family: 'Nunito', sans-serif;"  >Login</button>
-</form>
-          
-          
-          
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-  
-  
-  <!--                      Login Form modal                           -->
   
   
   <script>

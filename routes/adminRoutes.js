@@ -10,13 +10,18 @@ var flash = require('connect-flash');
   var multer = require('multer'); 
 
 
-router.get('/AdminPortal',function(req,res){
-  if (req.user.username.toString() === "Admin" ) {
-      res.render('adminPage');
-  } else {
-    res.render("login")
-  }
-});
+router.get('/AdminPortal',isAdmin,function(req,res){
+
+      User.find({},function(err,members){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('adminPage',{members:members});
+        }
+  })
+
+})
 
 
 
@@ -25,8 +30,17 @@ router.get('/AdminPortal',function(req,res){
 
 
 
-router.get('/uploadImage',function(req,res){
-  res.render("uploadImage")
+router.get('/uploadImage',isAdmin,function(req,res){
+  
+ 
+  Image.find({},function(err,images){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('uploadImage',{images:images});
+        }
+  })
 })
 
 
@@ -49,7 +63,7 @@ router.get('/uploadImage',function(req,res){
         if (err) {
           console.log(err)
         } else {
-          res.redirect("/");
+          res.redirect("back");
         }
       })
 
@@ -63,7 +77,7 @@ router.get('/uploadImage',function(req,res){
 
 
 
-router.get('/AdminPortal',function(req,res){
+router.get('/AdminPortal',isAdmin,function(req,res){
   if (req.user.username.toString() === "Admin" ) {
       res.render('adminPage');
   } else {
@@ -72,17 +86,14 @@ router.get('/AdminPortal',function(req,res){
 });
 
 
-router.get('/EditEvent',function(req,res){
-  
-  
+router.get('/EditEvent',isAdmin,function(req,res){
+
       res.render('EditEvent');
- 
-  
- 
+
 });
 
 
-router.get('/AddEvent',function(req,res){
+router.get('/AddEvent',isAdmin,function(req,res){
   res.render("AddEvent")
 })
 
@@ -117,50 +128,186 @@ router.post('/AddEvent',function(req,res){
 
 
 
-router.get('/CSImembers',function(req,res){
+router.get('/profile/:id',function(req,res){
      
+          User.findById(req.params.id,function(err,user){
+    if (err) {
+      console.log(err);
+    } else {
       
-      res.render('members');
+      res.render('profile',{user:user});
+        }
+  })
+     
+})
+
+
+router.post('/deleteMember/:id',isAdmin,function(req,res){
+     
+          User.findByIdAndRemove(req.params.id,function(err,user){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.redirect("back");
+        }
+  })
+     
+})
+
+
+router.post('/deleteImage/:id',isAdmin,function(req,res){
+     
+          Image.findByIdAndRemove(req.params.id,function(err,user){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.redirect("back");
+        }
+  })
+     
+})
+
+
+
+router.get('/eventWise',isAdmin,function(req,res){
+     
+          Event.find({},function(err,events){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('eventWise',{events:events});
+        }
+  })
+     
+})
+
+router.get('/showEventStudents/:id',isAdmin,function(req,res){
+     
+  Event.find({},function(err,events){
+    if (err) {
+      console.log(err);
+    } else {
+      
+         Event.findById(req.params.id,function(err,event){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('eventWiseStudents',{events:events,event:event});
+        }
+  })
+        }
+  })
+  
+  
+ 
+   
    
 })
 
 
-router.get('/CSImembers/compsA',function(req,res){
-      User.find({'Class':'S.E - Computer Engineering(A)'},function(err,members){
+
+
+router.get('/feCE',isAdmin,function(req,res){
+      User.find({'Class':'F.E - Computer Engineering'},function(err,members){
     if (err) {
       console.log(err);
     } else {
       
-      res.render('CompsAmembers',{members:members});
+      res.render('feCE',{members:members});
         }
   })
 })
 
 
-router.get('/CSImembers/compsB',function(req,res){
-      User.find({'Class':'S.E - Computer Engineering(B)'},function(err,members){
+
+router.get('/feIT',isAdmin,function(req,res){
+      User.find({'Class':'F.E - IT Engineering'},function(err,members){
     if (err) {
       console.log(err);
     } else {
       
-      res.render('CompsBmembers',{members:members});
+      res.render('feIT',{members:members});
         }
   })
 })
 
 
-router.get('/CSImembers/IT',function(req,res){
-      User.find({'Class':'S.E - IT'},function(err,members){
+router.get('/feEXTC',isAdmin,function(req,res){
+      User.find({'Class':'F.E - EXTC Engineering'},function(err,members){
     if (err) {
       console.log(err);
     } else {
       
-      res.render('ITmembers',{members:members});
+      res.render('feEXTC',{members:members});
         }
   })
 })
 
 
+
+router.get('/seCE',isAdmin,function(req,res){
+      User.find({'Class':'S.E - Computer Engineering'},function(err,members){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('seCE',{members:members});
+        }
+  })
+})
+
+
+
+router.get('/seIT',isAdmin,function(req,res){
+      User.find({'Class':'S.E - IT Engineering'},function(err,members){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('seIT',{members:members});
+        }
+  })
+})
+
+
+router.get('/seEXTC',isAdmin,function(req,res){
+      User.find({'Class':'S.E - EXTC Engineering'},function(err,members){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('seEXTC',{members:members});
+        }
+  })
+})
+
+router.get('/teCE',isAdmin,function(req,res){
+      User.find({'Class':'T.E - Computer Engineering'},function(err,members){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('teCE',{members:members});
+        }
+  })
+})
+
+
+
+router.get('/teIT',isAdmin,function(req,res){
+      User.find({'Class':'T.E - IT Engineering'},function(err,members){
+    if (err) {
+      console.log(err);
+    } else {
+      
+      res.render('teIT',{members:members});
+        }
+  })
+})
 
 
 
@@ -241,6 +388,14 @@ function isLoggedIn(req,res,next){
   }
 }
 
+function isAdmin(req,res,next){
+  if (req.user.username === "Admin") {
+    return next();
+  } else {
+    req.flash("error","You must be logged in to do that");
+    res.render('login');
+  }
+}
 
 
 

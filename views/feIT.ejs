@@ -27,22 +27,21 @@
      </div>
      
     </div> 
-  
-<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" 
+ <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" 
          style="height:50px;background-color:rgba(0,0,0,0.9)">
   
-  <div style="text-align:center" class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-3" >
+  <div style="text-align:center" class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12" >
         <div style='margin-top:10px'><a href="/" style="font-family: 'Nunito', sans-serif;font-size:25px;
                                 color:white;"><i class="fa fa-user"></i> Home Page</a></div>
       </div>
-  
-      <div style="text-align:center" class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-3" >
+      
+      <div style="text-align:center" class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12" >
         <div style='margin-top:10px'><a href="/AdminPortal" style="font-family: 'Nunito', sans-serif;font-size:25px;
                                 color:white;"><i class="fa fa-user"></i> Students</a></div>
       </div>
       
       
-      <div style="text-align:center" class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-3" >
+      <div style="text-align:center" class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12" >
          <div style='margin-top:10px'><a href="/AddEvent" style="font-family: 'Nunito', sans-serif;font-size:25px;
                                 color:white;"><i class="fa fa-plus"></i> Add Event</a></div>
       </div>
@@ -51,7 +50,7 @@
 
       
       
-      <div style="text-align:center" class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-3" >
+      <div style="text-align:center" class="col col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12" >
          <div style='margin-top:10px'><a href="/uploadImage" style="font-family: 'Nunito', sans-serif;font-size:25px;
                                 color:white;"><i class="fa fa-plus"></i> Add Photos</a></div>
       </div>
@@ -61,7 +60,6 @@
       
       
       </div>
-    
     
     
     <div class="col col-lg-3">
@@ -135,10 +133,6 @@
 
 
   <div class="col col-lg-9">
-    
-      <div class="col col-lg-12" style="border-right:solid 2px #ccc;border-bottom:solid 1px #ccc;background-color:grey">
-  <p style="font-size:17px; text-align:center;margin-top:8px;font-weight:bold ">All Students</p> </div>
-    
          
 <div class="col col-lg-3" style="border-right:solid 2px #ccc;border-bottom:solid 1px #ccc;background-color:lightblue">
   <p style="font-size:17px; text-align:center;margin-top:8px;font-weight:bold ">StudentName</p>
@@ -174,21 +168,11 @@
     <div class="col col-lg-2" style="border-bottom:solid 1px #ccc">
   <p style="font-size:17px; text-align:center;margin-top:8px;"><%=member.MobileNumber%></p>
   </div>
-<div class="col col-lg-1" style="text-align:center;">
-  <p>
-      <a href="/profile/<%=member._id%>"><button style="margin-top:10px">Profile</button></a>
-   </div>
-    
-    <div class="col col-lg-1" style="text-align:center;">
-  <form action="/deleteMember/<%=member._id%>" method="POST">
-   <button style="margin-top:10px;background-color:red;color:white">remove</button>
-  </form>
-  </p>
- </div>
+<div class="col col-lg-2" style="text-align:center;">
   
-  
+  <a href=""><button style="margin-top:10px">View Profile</button></a>
 
- 
+  </div>
 <%})%>
     
     

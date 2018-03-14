@@ -1,7 +1,4 @@
-
-<head>
-  <title>CSI</title>
- <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -10,17 +7,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700" rel="stylesheet">
 
-</head>
-
-
-
-
-<div class="">
+<body>
   
   <div class="row">
-    
-    
-    <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
+      <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
         style="height:180px;background-color:rgba(0,0,0,0.5)">
      <div class="col col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
        <img style="margin-top:10px;height:160px;width:160px" src="https://i.imgur.com/vgOYEad.png" alt="">
@@ -37,9 +27,7 @@
      </div>
      
     </div> 
-    
-    
-     
+  
 <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" 
          style="height:50px;background-color:rgba(0,0,0,0.9)">
       
@@ -70,41 +58,88 @@
       </div>
     
     
-  
-  <div class="col col-lg-12 col-sm-12 col-xs-12">
     
-    
-    
-    <form  action = '/AddEvent' method = "post">
-    
-    <div  class="form-group">
-     
-     
-      <div class="container">
-      <input style="margin-top:20px" class="form-control" type="text" name = "EventName" placeholder="Event name">
-      <input style="margin-top:20px" class="form-control" type="text" name = "EventDateInWords" placeholder="Date in Words">
-      <input style="margin-top:20px" class="form-control" type="date" name = "EventDate" placeholder="Event Date">
-      <textarea style="margin-top:20px" class="form-control"  rows="8" type = 'text' name = 'EventDescription' placeholder = 'Event Description'></textarea>
+    <div class="col col-lg-3">
       
+     <div class="col col-lg-6" style="height:30px;text-align:center;background-color:white;border:solid 2px grey"> 
+       <a href="/AdminPortal" style="color:grey;font-family: 'Nunito', sans-serif;font-size:20px;">Class-wise</a>
+      </div>
+      
+        <div class="col col-lg-6" style="height:30px;text-align:center;border:solid 2px grey;background-color:grey;"> 
+       <a style="color:white;font-family: 'Nunito', sans-serif;font-size:20px;" href="/eventWise">Event-wise</a>
+      </div>
+      
+      
+      
+      <%events.forEach(function(event){%>
+        <div class="col col-lg-12" style="height:50px;text-align:center;margin-top:30px; border:solid 1px #ccc;">
+        <a href="/showEventStudents/<%=event._id%>"
+                                                                          style="font-family: 'Nunito', sans-serif;
+                                                                                 font-size:20px;
+                                                                                 
+                                                                                 color:blue"><p style="margin-top:10px;">
+                                                                                <strong><%=event.EventName%></strong></a> </p></div>
+      <%})%>
+      
+
      
-   
-      <button class="btn btn-primary" style="width:100%" >Submit</button>
-      </div>
-      </div>
-    
-</form>
-    
-  
+
   </div>
-  
-</div>
-  
-</div>
 
 
-
-
+  <div class="col col-lg-9">
+         
+  <div class="col col-lg-12" style="border-right:solid 2px #ccc;border-bottom:solid 1px #ccc;background-color:grey">
+  <p style="font-size:17px; text-align:center;margin-top:8px;font-weight:bold "><%=event.EventName%> Students</p>
+  </div>
+    
+    <div class="col col-lg-12" style="border-right:solid 2px #ccc;border-bottom:solid 1px #ccc;background-color:lightblue">
+  <p style="font-size:17px; text-align:center;margin-top:8px;font-weight:bold ">StudentName</p>
+  </div>
  
-   
-  
+
+    
+    
+    
+            
+    <%event.RegisteredStudents.forEach(function(member){%>
+<div class="col col-lg-12" style="border-right:solid 2px #ccc;border-bottom:solid 1px #ccc">
+  <p style="font-size:17px; text-align:center;margin-top:8px; "><%=member.StudentName%></p>
+  </div>
  
+<%})%>
+    
+    
+    
+    
+    
+    
+    
+    
+
+      </div>
+
+    
+     
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+

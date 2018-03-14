@@ -37,7 +37,7 @@ router.get('/',function(req,res){
 
 
 
-router.get('/open/:id',function(req,res){
+router.get('/open/:id',isLoggedIn,function(req,res){
   Event.findById(req.params.id,function(err,event){
     if (err) {
       console.log(err)
@@ -57,21 +57,7 @@ router.get('/open/:id',function(req,res){
 
 router.post('/register/:id/:EventName',function(req,res){
 
-       User.findById(req.user._id,function(err,user){
-         if (err) {
-          console.log(err)
-        } else {
-         
-          var event = {
-            id:req.params.id,
-            EventName:req.params.EventName
-          }
-          
-          user.RegisteredEvents.push(event);
-          user.save(function(err,saved){
-            if (err) {
-              console.log(err)
-            } else {
+     
             
               
                
@@ -79,6 +65,29 @@ router.post('/register/:id/:EventName',function(req,res){
             if (err) {
               console.log(err)
             } else {
+              
+              
+                User.findById(req.user._id,function(err,user){
+         if (err) {
+          console.log(err)
+        } else {
+         
+          if (event.RegisteredStudents.some(user=>user.id.toString() === req.user._id.toString())) {
+            console.log("already registerd");
+            res.redirect("back");
+          } else {
+                var eventToRegister = {
+            id:req.params.id,
+            EventName:req.params.EventName
+          }
+          
+          user.RegisteredEvents.push(eventToRegister);
+          user.save(function(err,saved){
+            if (err) {
+              console.log(err)
+            } else {
+           
+              
               var Register = {
                               id:req.user._id,
                               StudentName:req.user.StudentName
@@ -90,20 +99,17 @@ router.post('/register/:id/:EventName',function(req,res){
               console.log(err)
             } else {
                 res.redirect("back");
-              
             }
           })
-              
-            }
-          })             
             }
           })
-            
+          }
         }
-       })
-
-})
-
+                })
+            }
+          })
+   
+})                    
 
 
 
@@ -421,15 +427,15 @@ res.redirect('/');
 
 
 /////////////////////Login route///////////////////////////
-router.get('/login',function(req,res){
-res.render('login');
-});
+// router.get('/login',function(req,res){
+// res.render('login');
+// });
 
 //login logic
 // app.post('/login',middleware,callback)
 router.post('/login',passport.authenticate("local",
 {successRedirect: "/",
-failureRedirect: "/login"
+failureRedirect: "/"
 }),function(req,res){
 
 });
@@ -446,8 +452,8 @@ function isLoggedIn(req,res,next){
   if (req.isAuthenticated()) {
     return next();
   } else {
-    req.flash("error","You must be logged in to do that");
-    res.redirect('/login');
+    
+    res.render('login');
   }
 }
 
