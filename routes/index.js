@@ -175,8 +175,11 @@ router.get('/allEvents',function(req,res){
 });
 
 
+// Room.find({}).sort('-date').exec(function(err, docs) { })
+
+
 router.get('/pastEvents',function(req,res){
-    Event.find({},function(err,events){
+    Event.find({}).sort('-EventDate').exec(function(err,events){
     if (err) {
       console.log(err);
     } else {
